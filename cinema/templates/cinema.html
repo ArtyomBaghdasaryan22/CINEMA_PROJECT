@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cinema</title>
+</head>
+<body>
+    <div id="sidebar">
+        <nav>
+            <ul>
+                <li><a href="{% url 'room_list' %}">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="content">
+        {% block content %}
+        <!-- Main page content will be inserted here -->
+        {% endblock %}
+    </div>
+
+    <div id="footer">
+        <!-- Footer content can go here -->
+    </div>
+</body>
+</html>

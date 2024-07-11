@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seat List for {{ showtime }}</title>
+</head>
+<body>
+    <h1>Seat List for {{ showtime }}</h1>
+    <ul>
+        {% for seat in seats %}
+            <li>
+                Seat {{ seat.seat_number }} in row {{ seat.row }}
+                {% if seat.id in booked_seats %}
+                    <span style="color: red;">(Booked)</span>
+                {% else %}
+                    <form method="post" action="{% url 'seat_list' showtime_id=showtime.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="seat_id" value="{{ seat.id }}">
+                        <button type="submit">Book</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
+
+

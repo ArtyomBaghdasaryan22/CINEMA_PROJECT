@@ -1,0 +1,20 @@
+{% extends 'cinema.html' %}
+
+{% block content %}
+    <h1>Films in {{ room.name }}</h1>
+    <ul style="padding: 0;">
+        {% for showtime in showtimes %}
+        <li style="margin-bottom: 20px; display: flex; align-items: center;">
+            <a href="{% url 'seat_list' showtime.id %}" style="text-decoration: none; display: flex; align-items: center;">
+                <div style="flex: 1;">
+                    <h3 style="margin: 0;">{{ showtime.movie.title }}</h3>
+                    <p style="margin: 0; font-size: 14px;">в {{ showtime.showtime }}</p>
+                </div>
+                <img src="{{ showtime.movie.poster.url }}" alt="{{ showtime.movie.title }} Poster" style="max-width: 150px; max-height: 200px; margin-left: 20px;">
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
